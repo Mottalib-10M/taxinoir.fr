@@ -87,7 +87,7 @@ export function revenuNet(i: RevenuInput): RevenuResult {
 
 /** Valeurs par défaut du simulateur : des hypothèses d'exemple, toutes modifiables par le visiteur. */
 export const DEFAULTS: Record<Metier, RevenuInput> = {
-  vtc_plateforme: { metier: 'vtc_plateforme', statut: 'micro', coursesSemaine: 70, prixMoyen: 20, semaines: 46, heuresSemaine: 50, commission: 0.25, baseCa: 'client', carburantMois: 450, vehiculeMois: 550, assuranceMois: 200, entretienMois: 80, licenceMois: 0, autresMois: 80 },
+  vtc_plateforme: { metier: 'vtc_plateforme', statut: 'micro', coursesSemaine: 90, prixMoyen: 20, semaines: 46, heuresSemaine: 50, commission: 0.25, baseCa: 'client', carburantMois: 450, vehiculeMois: 550, assuranceMois: 200, entretienMois: 80, licenceMois: 0, autresMois: 80 },
   vtc_propre: { metier: 'vtc_propre', statut: 'micro', coursesSemaine: 35, prixMoyen: 45, semaines: 46, heuresSemaine: 45, commission: 0, carburantMois: 400, vehiculeMois: 650, assuranceMois: 200, entretienMois: 80, licenceMois: 0, autresMois: 150 },
   taxi: { metier: 'taxi', statut: 'micro', coursesSemaine: 60, prixMoyen: 25, semaines: 46, heuresSemaine: 50, commission: 0, carburantMois: 450, vehiculeMois: 500, assuranceMois: 250, entretienMois: 90, licenceMois: 0, autresMois: 150 },
 };
