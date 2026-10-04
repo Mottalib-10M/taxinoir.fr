@@ -8,7 +8,7 @@ import type { SourceKey } from './engine/params';
 import type { Params } from './engine/params';
 
 export type Lang = 'fr' | 'en';
-export type Group = 'vtc' | 'taxi' | 'ambulance' | 'revenus' | 'outils';
+export type Group = 'vtc' | 'taxi' | 'ambulance' | 'autres' | 'revenus' | 'outils';
 export interface FAQ { q: string; a: string }
 
 /** Outils fournis pour écrire le corps : liens internes, nombres au format de la langue. */

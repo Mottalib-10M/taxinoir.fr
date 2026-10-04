@@ -7,14 +7,14 @@ const CORE: Record<Locale, Record<string, string>> = {
   en: { home: 'Home', method: 'Method and sources', about: 'About', widget: 'Embed the calculator', contact: 'Contact', editorial: 'Editorial policy', privacy: 'Privacy', terms: 'Legal notice', cookies: 'Cookies' },
 };
 const GROUP_LABEL: Record<Locale, Record<Group, string>> = {
-  fr: { vtc: 'VTC', taxi: 'Taxi', ambulance: 'Ambulancier', revenus: 'Revenus', outils: 'Simulateurs' },
-  en: { vtc: 'VTC', taxi: 'Taxi', ambulance: 'Ambulance', revenus: 'Earnings', outils: 'Calculators' },
+  fr: { vtc: 'VTC', taxi: 'Taxi', ambulance: 'Ambulancier', autres: 'Autres métiers', revenus: 'Revenus', outils: 'Simulateurs' },
+  en: { vtc: 'VTC', taxi: 'Taxi', ambulance: 'Ambulance', autres: 'Other driving jobs', revenus: 'Earnings', outils: 'Calculators' },
 };
 export const label = (id: string, lang: Locale) => CORE[lang][id] ?? pageById(id)?.[lang].nav ?? id;
 const link = (id: string, lang: Locale): NavLink => ({ href: route(id, lang), label: label(id, lang) });
 const inGroup = (g: Group, lang: Locale) => PAGES.filter((p) => p.group === g).map((p) => link(p.id, lang));
 export function navCategories(lang: Locale): NavCategory[] {
-  return (['vtc', 'taxi', 'ambulance', 'revenus', 'outils'] as Group[]).map((g) => ({ label: GROUP_LABEL[lang][g], links: inGroup(g, lang) })).filter((c) => c.links.length);
+  return (['vtc', 'taxi', 'ambulance', 'autres', 'revenus', 'outils'] as Group[]).map((g) => ({ label: GROUP_LABEL[lang][g], links: inGroup(g, lang) })).filter((c) => c.links.length);
 }
 export const navDirect = (lang: Locale): NavLink[] => [link('method', lang)];
 export const footerColumns = (lang: Locale): NavCategory[] => [...navCategories(lang), { label: lang === 'fr' ? 'Le site' : 'Site', links: ['home', 'method', 'about', 'contact', 'editorial', 'widget', 'terms', 'privacy', 'cookies'].map((i) => link(i, lang)) }];
