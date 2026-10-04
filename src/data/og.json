@@ -1,0 +1,20 @@
+{
+ "accent": "#111827",
+ "symbol": "TX",
+ "variants": [
+  {
+   "file": "og-fr.png",
+   "title": "Taxi, VTC, ambulancier\ndevenir chauffeur en 2026",
+   "subtitle": "Carte pro · Examen T3P · Licence · Statut · Revenu net",
+   "badge": "Textes officiels cités et datés",
+   "brand": "TaxiNoir"
+  },
+  {
+   "file": "og-en.png",
+   "title": "Taxi, VTC, ambulance\nbecome a driver in France",
+   "subtitle": "Driver card · T3P exam · Licence · Status · Net income",
+   "badge": "Official texts cited and dated",
+   "brand": "TaxiNoir"
+  }
+ ]
+}

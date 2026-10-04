@@ -1,0 +1,21 @@
+{
+ "name": "TaxiNoir",
+ "short_name": "TaxiNoir",
+ "description": "Devenir chauffeur de taxi, VTC ou ambulancier en 2026 : carte professionnelle, examen T3P, licence, statut, assurance et simulateur de revenu net.",
+ "start_url": "/fr/",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#111827",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

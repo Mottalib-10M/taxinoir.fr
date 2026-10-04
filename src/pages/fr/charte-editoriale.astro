@@ -1,0 +1,30 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'fr';
+---
+<PageLayout title={`Charte éditoriale – ${SITE_NAMES[lang]}`} description="D’où viennent nos règles et nos chiffres sur les métiers de chauffeur, qui en répond, à quel rythme ils sont vérifiés, et ce que nous faisons quand une erreur est signalée." lang={lang} noindex={true} breadcrumbs={[{ label: 'Charte éditoriale' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Charte éditoriale et politique de correction</h1>
+    <p>Quelqu’un qui décide de changer de métier, d’emprunter pour un véhicule ou d’acheter une licence prend une décision lourde. Nous disons donc d’où viennent nos informations, qui en répond et ce qui se passe quand l’une d’elles est fausse.</p>
+    <h2>Responsabilité</h2><p>Les contenus et les calculs sont sous la responsabilité de {AUTHOR_NAME}. Contact : <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Sources primaires uniquement</h2>
+    <p>Aucune règle n’est reprise d’un centre de formation, d’un blog ou d’un forum. Nous lisons :</p>
+    <ul>
+      <li><strong>Légifrance</strong> : code des transports, arrêtés, décrets, conventions collectives ;</li>
+      <li><strong>service-public.gouv.fr</strong> : fiches des démarches, avec leur date de vérification ;</li>
+      <li><strong>les chambres de métiers et de l’artisanat</strong> : règlement et tarifs de l’examen ;</li>
+      <li><strong>l’Urssaf et l’administration fiscale</strong> : cotisations, seuils, TVA ;</li>
+      <li><strong>le registre des VTC</strong> du ministère chargé des transports.</li>
+    </ul>
+    <h2>Plateformes et marques</h2><p>Sur une plateforme de réservation ou une centrale, nous ne publions que ce qu’elle a publié elle-même ou ce qu’en dit une source publique, cité et daté, sans allégation négative non sourcée. Les marques appartiennent à leurs propriétaires.</p>
+    <h2>Revenus</h2><p>Un revenu affiché est toujours une estimation du simulateur, calculée à partir des hypothèses du visiteur et des taux officiels. Nous ne publions pas de revenu moyen sans donnée publique sourcée.</p>
+    <h2>Tests avant publication</h2><p>Les cotisations minimales et maximales publiées par l’Urssaf, les seuils de TVA, les critères techniques des véhicules et le barème de l’examen sont rejoués à chaque compilation. Un écart bloque la publication.</p>
+    <h2>Cycle de mise à jour</h2><p>Revue complète au moins tous les {REVIEW_CYCLE_MONTHS} mois, et à chaque nouveau texte. La date affichée sur les pages vient du fichier de paramètres.</p>
+    <h2>Traitement des erreurs</h2>
+    <ol><li>Vérification contre la source primaire.</li><li>Correction des données ou du code, ajout d’un test.</li><li>Nouvelle date sur la page ; une correction notable est signalée sur la page concernée.</li></ol>
+    <h2>Indépendance</h2><p>Nous ne vendons aucun contact et ne recevons aucune rémunération d’un centre de formation, d’un assureur, d’un loueur ou d’une plateforme. Toute relation de ce type serait indiquée dans le texte.</p>
+    <p>Voir aussi la <a href={route('method', lang)}>méthode</a>. Version de la charte : {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

@@ -1,0 +1,25 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { YEAR, LAST_UPDATED, AUTHOR_NAME, CONTACT_EMAIL, AUTHOR_ROLE } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema } from '../../lib/seo';
+import { displayDate } from '../../lib/format';
+const lang = 'fr';
+---
+<PageLayout title="TaxiNoir : qui édite ce site pour les chauffeurs, et comment" description="Qui édite TaxiNoir, pourquoi un site pour les futurs chauffeurs de taxi, de VTC et les ambulanciers, comment il est financé et comment nous signaler une erreur." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Accueil', path: route('home', lang) }, { name: 'À propos', path: route('about', lang) }])]} breadcrumbs={[{ label: 'À propos' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">À propos de TaxiNoir</h1></header>
+  <div class="prose prose-slate max-w-none">
+    <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
+    <p>Radif Partners édite des simulateurs et des guides pratiques pour plusieurs pays. TaxiNoir s’adresse à celles et ceux qui veulent conduire des passagers pour en vivre : futurs chauffeurs de VTC, futurs taxis, futurs ambulanciers, et chauffeurs déjà installés qui veulent savoir ce qu’il leur reste vraiment à la fin du mois.</p>
+    <h2>Pourquoi ce site</h2>
+    <p>En cherchant comment devenir chauffeur, on tombe surtout sur des pages écrites par des centres de formation, des sociétés de création d’entreprise ou des assureurs. Elles ne sont pas fausses par principe, mais elles ont toutes quelque chose à vendre, et les règles changent plus vite qu’elles ne sont mises à jour : la fin de l’accès au métier de VTC par l’expérience, au 12 août 2026, en est l’exemple le plus récent. Nous avons voulu un parcours lisible, relié aux textes, et des simulateurs qui chiffrent le cas de chacun.</p>
+    <h2>Notre méthode</h2>
+    <p>Chaque valeur réglementaire (tarif de l’examen, frais du registre, taux de cotisation, seuil de TVA, critère technique d’un véhicule, grille de salaire) est lue sur sa source officielle et écrite une seule fois dans un fichier de paramètres daté. Toutes les pages la reprennent de là, et des tests automatiques vérifient le moteur avant chaque publication. Le détail est dans la <a href={route('method', lang)}>méthode et les sources</a>.</p>
+    <h2>Ce que nous ne sommes pas</h2>
+    <p>Radif Partners n’est ni une administration, ni une plateforme de réservation, ni une centrale de taxis, ni un centre de formation, ni un cabinet d’expertise comptable. Nous ne vendons aucun contact, ne touchons aucune commission et ne mettons en avant aucune formation, aucun assureur, aucun loueur. Les revenus affichés sont des estimations calculées à partir de vos hypothèses, jamais des promesses.</p>
+    <h2>Financement</h2><p>Le site est gratuit. S’il affiche un jour de la publicité, elle ne sera jamais placée au-dessus d’un simulateur. Aucune donnée n’est vendue : les calculs se font dans votre navigateur.</p>
+    <h2>Une version anglaise</h2><p>Chaque page existe en anglais, pour les anglophones qui vivent en France et veulent conduire un taxi, un VTC ou une ambulance : les termes français y sont expliqués et les montants restent en euros.</p>
+    <h2>Nous écrire</h2><p>Une règle a changé, un montant vous paraît faux, une situation n’est pas couverte ? <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Voir aussi la <a href={route('editorial', lang)}>charte éditoriale</a> et les <a href={route('terms', lang)}>mentions légales</a>.</p>
+    <p class="text-sm text-navy-600">Paramètres {YEAR}, vérifiés le <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'fr-FR')}</time>.</p>
+  </div>
+</PageLayout>

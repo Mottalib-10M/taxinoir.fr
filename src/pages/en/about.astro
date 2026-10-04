@@ -1,0 +1,25 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { YEAR, LAST_UPDATED, AUTHOR_NAME, CONTACT_EMAIL, AUTHOR_ROLE } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema } from '../../lib/seo';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+---
+<PageLayout title="TaxiNoir: who publishes this guide for drivers, and how" description="Who publishes TaxiNoir, why a site for future taxi, VTC and ambulance drivers in France, how it is funded and how to tell us about a mistake you have spotted." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">About TaxiNoir</h1></header>
+  <div class="prose prose-slate max-w-none">
+    <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
+    <p>Radif Partners publishes calculators and practical guides for several countries. TaxiNoir is for people who want to earn a living driving passengers in France: future VTC (private-hire) drivers, future taxi drivers, future ambulance workers, and drivers already on the road who want to know what is really left at the end of the month.</p>
+    <h2>Why this site exists</h2>
+    <p>Search for how to become a driver in France and most of what comes up is written by training centres, company-formation services or insurers. Their pages are not wrong by default, but each has something to sell, and the rules change faster than those pages are updated: the end of access to VTC work through experience, on 12 August 2026, is the latest example. We wanted a clear path, tied to the official texts, with calculators that put numbers on each person’s situation.</p>
+    <h2>How we work</h2>
+    <p>Every regulatory value (exam fee, register fee, contribution rate, VAT threshold, vehicle criterion, pay scale) is read at its official source and written once, in a dated parameter file. Every page reads it from there, and automated tests check the engine before each release. Details are on the <a href={route('method', lang)}>method and sources</a> page.</p>
+    <h2>What we are not</h2>
+    <p>Radif Partners is not a government body, a ride-hailing platform, a taxi dispatcher, a training centre or an accountancy firm. We sell no contacts, take no commission and promote no course, insurer or rental company. Earnings shown are estimates built from your own assumptions, never promises.</p>
+    <h2>Funding</h2><p>The site is free. If it ever carries advertising, no ad will sit above a calculator. No data is sold: calculations run in your browser.</p>
+    <h2>A French version</h2><p>Every page also exists in French, the language of the exam, the online forms and the prefecture. The English pages explain French terms and keep amounts in euros.</p>
+    <h2>Contact</h2><p>A rule has changed, an amount looks wrong, a situation is not covered? <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. See also the <a href={route('editorial', lang)}>editorial policy</a> and the <a href={route('terms', lang)}>legal notice</a>.</p>
+    <p class="text-sm text-navy-600">{YEAR} parameters, checked on <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'en-GB')}</time>.</p>
+  </div>
+</PageLayout>

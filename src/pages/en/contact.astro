@@ -1,0 +1,23 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'en';
+---
+<PageLayout title={`Contact – ${SITE_NAMES[lang]}`} description="Write to us: report a rule that has changed or an amount that looks wrong, ask about the method, or ask to embed the net income calculator on your own site." lang={lang} noindex={true} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contact</h1>
+    <p>We read every message: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Reporting a mistake</h2>
+    <p>Send the page address, the calculator’s <strong>share link</strong> if it is about a calculation (it holds your inputs), and the official source that makes you think the figure is wrong: a Transport Code article, a service-public page, a CMA or Urssaf page. Every confirmed error is fixed and added to the automated tests, as described in the <a href={route('editorial', lang)}>editorial policy</a>.</p>
+    <h2>Embedding the calculator</h2>
+    <p>Driver associations, unions, newsrooms: the net income calculator can be embedded free of charge in an iframe. The code is on the <a href={route('widget', lang)}>embed page</a>.</p>
+    <h2>What we do not do</h2>
+    <p>We give no individual legal, tax or accounting advice, review no files and recommend no training centre, insurer or platform. For your own case, contact the prefecture, the chamber of trades (CMA), Urssaf or a chartered accountant.</p>
+    <h2>Response times</h2><p>Usually within five working days, errors first. Every parameter is reviewed at least every {REVIEW_CYCLE_MONTHS} months.</p>
+    <h2>Publisher</h2>
+    <LegalIdentity lang={lang} />
+    <p>See the <a href={route('terms', lang)}>legal notice</a>. Content owner: {AUTHOR_NAME}. Updated: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

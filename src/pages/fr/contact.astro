@@ -1,0 +1,23 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'fr';
+---
+<PageLayout title={`Contact – ${SITE_NAMES[lang]}`} description="Nous écrire : signaler une règle qui a changé ou un montant qui paraît faux, poser une question sur la méthode, demander l’intégration du simulateur sur un site." lang={lang} noindex={true} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contact</h1>
+    <p>Nous lisons chaque message : <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Signaler une erreur</h2>
+    <p>Envoyez l’adresse de la page, le <strong>lien de partage</strong> du simulateur s’il s’agit d’un calcul (il contient vos saisies), et la source officielle qui vous fait penser que le chiffre est faux : article du code des transports, fiche service-public, page de la CMA ou de l’Urssaf. Tout écart confirmé est corrigé et ajouté aux tests automatiques, selon la <a href={route('editorial', lang)}>charte éditoriale</a>.</p>
+    <h2>Intégrer le simulateur</h2>
+    <p>Associations de chauffeurs, syndicats, rédactions : le simulateur de revenu net s’intègre gratuitement en iframe. Le code est sur la page <a href={route('widget', lang)}>Intégrer le simulateur</a>.</p>
+    <h2>Ce que nous ne faisons pas</h2>
+    <p>Nous ne donnons aucun conseil juridique, fiscal ou comptable individuel, n’examinons pas de dossier et ne recommandons aucun centre de formation, aucun assureur ni aucune plateforme. Pour votre situation, adressez-vous à la préfecture, à la chambre de métiers et de l’artisanat, à l’Urssaf ou à un expert-comptable.</p>
+    <h2>Délais</h2><p>Réponse en général sous cinq jours ouvrés, en priorité pour les erreurs. Chaque paramètre est revu au moins tous les {REVIEW_CYCLE_MONTHS} mois.</p>
+    <h2>Éditeur</h2>
+    <LegalIdentity lang={lang} />
+    <p>Voir les <a href={route('terms', lang)}>mentions légales</a>. Responsable du contenu : {AUTHOR_NAME}. Mise à jour : {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

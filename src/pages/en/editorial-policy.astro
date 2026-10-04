@@ -1,0 +1,30 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'en';
+---
+<PageLayout title={`Editorial policy – ${SITE_NAMES[lang]}`} description="Where our rules and figures on driving jobs in France come from, who is responsible for them, how often they are checked and what we do when a mistake is reported." lang={lang} noindex={true} breadcrumbs={[{ label: 'Editorial policy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Editorial and corrections policy</h1>
+    <p>Changing career, borrowing for a car or buying a taxi licence are big decisions. So we say where our information comes from, who stands behind it and what happens when something is wrong.</p>
+    <h2>Responsibility</h2><p>Content and calculations are the responsibility of {AUTHOR_NAME}. Contact: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Primary sources only</h2>
+    <p>No rule is taken from a training centre, a blog or a forum. We read:</p>
+    <ul>
+      <li><strong>Légifrance</strong>: the Transport Code, orders, decrees, collective agreements;</li>
+      <li><strong>service-public.gouv.fr</strong>: official procedure pages, with their review date;</li>
+      <li><strong>the chambers of trades (CMA)</strong>: exam rules and fees;</li>
+      <li><strong>Urssaf and the tax authorities</strong>: contributions, thresholds, VAT;</li>
+      <li><strong>the VTC register</strong> run by the transport ministry.</li>
+    </ul>
+    <h2>Platforms and brands</h2><p>About a booking platform or dispatcher, we publish only what it has published itself or what a public source says, cited and dated, with no unsourced negative claim. Brand names belong to their owners.</p>
+    <h2>Earnings</h2><p>Any earnings figure is a calculator estimate based on the visitor’s own assumptions and official rates. We publish no average income without a sourced public figure.</p>
+    <h2>Tests before release</h2><p>Urssaf’s published minimum and maximum contributions, VAT thresholds, vehicle criteria and the exam marking scheme are replayed at every build. Any discrepancy blocks the release.</p>
+    <h2>Update cycle</h2><p>A full review at least every {REVIEW_CYCLE_MONTHS} months, and with every new text. The date shown on pages comes from the parameter file.</p>
+    <h2>Handling errors</h2>
+    <ol><li>Check against the primary source.</li><li>Fix the data or code, add a test.</li><li>New date on the page; a significant correction is flagged on the page itself.</li></ol>
+    <h2>Independence</h2><p>We sell no contacts and receive no payment from training centres, insurers, rental firms or platforms. Any such relationship would be stated in the text.</p>
+    <p>See also the <a href={route('method', lang)}>method page</a>. Policy version: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

@@ -1,0 +1,667 @@
+{
+  "_lisezmoi": "Tous les paramètres réglementaires du site vivent ici, jamais en dur dans une page (RECETTE §4, §17.4). Chaque bloc porte sa source (clé de `sources`) et la date de lecture. À la rentrée et à chaque réforme : relire chaque valeur sur sa source, mettre retrieved_at à jour, relancer npx vitest run.",
+  "year": 2026,
+  "retrieved_at": "2026-10-04",
+  "valid_from": "2026-01-01",
+  "valid_to": "2026-12-31",
+  "sources": {
+    "spVtc": {
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F31027",
+      "label": {
+        "fr": "Service-public.fr, Entreprendre : Devenir chauffeur de VTC (F31027, vérifié le 12 août 2026)",
+        "en": "Service-public.fr, Entreprendre: Becoming a VTC driver (F31027, checked 12 August 2026)"
+      }
+    },
+    "spTaxi": {
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F21907",
+      "label": {
+        "fr": "Service-public.fr, Entreprendre : Devenir chauffeur de taxi (F21907, vérifié le 13 juillet 2026)",
+        "en": "Service-public.fr, Entreprendre: Becoming a taxi driver (F21907, checked 13 July 2026)"
+      }
+    },
+    "cmaT3p": {
+      "url": "https://www.exament3p.fr/id/5",
+      "label": {
+        "fr": "Chambres de métiers et de l’artisanat : guide des examens taxi, VTC et VMDTR, tarifs 2026",
+        "en": "Chambers of trades (CMA): taxi, VTC and VMDTR exam guide, 2026 fees"
+      }
+    },
+    "cmaReglement": {
+      "url": "https://www.exament3p.fr/media/pdf/cma_reglement_examen_taxi.pdf",
+      "label": {
+        "fr": "CMA : règlement de l’examen d’accès aux professions de chauffeur de taxi, VTC et VMDTR (version de décembre 2024)",
+        "en": "CMA: rules of the taxi, VTC and VMDTR access exam (December 2024 version)"
+      }
+    },
+    "decretEquivalence": {
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054658967",
+      "label": {
+        "fr": "Décret n° 2026-764 du 5 août 2026 supprimant l’accès par l’expérience professionnelle aux professions de VTC et de VMDTR",
+        "en": "Decree no. 2026-764 of 5 August 2026 ending access to the VTC and VMDTR professions through work experience"
+      }
+    },
+    "ctL3122_3": {
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043154009",
+      "label": {
+        "fr": "Code des transports, article L3122-3 : registre des exploitants de VTC (version du 27 juin 2026)",
+        "en": "Transport Code, article L3122-3: register of VTC operators (version of 27 June 2026)"
+      }
+    },
+    "ctR3122": {
+      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000030048481/",
+      "label": {
+        "fr": "Code des transports, articles R3122-1 à R3122-5-1 : inscription au registre, pièces, délai, frais",
+        "en": "Transport Code, articles R3122-1 to R3122-5-1: register entry, documents, time limit, fees"
+      }
+    },
+    "ctL3120": {
+      "url": "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000029530481/",
+      "label": {
+        "fr": "Code des transports, articles L3120-1 à L3120-5 : dispositions communes aux taxis et VTC",
+        "en": "Transport Code, articles L3120-1 to L3120-5: rules common to taxis and VTCs"
+      }
+    },
+    "arreteVehicule": {
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000030429911",
+      "label": {
+        "fr": "Arrêté du 26 mars 2015 relatif aux caractéristiques des véhicules de VTC (version en vigueur depuis le 6 décembre 2023)",
+        "en": "Order of 26 March 2015 on VTC vehicle characteristics (version in force since 6 December 2023)"
+      }
+    },
+    "arreteFormationContinue": {
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000035484647/",
+      "label": {
+        "fr": "Arrêté du 11 août 2017 relatif à la formation continue des conducteurs de taxi et de VTC et à la mobilité des taxis",
+        "en": "Order of 11 August 2017 on continuing training for taxi and VTC drivers and taxi mobility"
+      }
+    },
+    "arreteCarteVtc": {
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000035600968/",
+      "label": {
+        "fr": "Arrêté du 7 septembre 2017 relatif aux cartes professionnelles de conducteur de VTC",
+        "en": "Order of 7 September 2017 on VTC driver cards"
+      }
+    },
+    "arreteSignaletique": {
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000034379025/",
+      "label": {
+        "fr": "Arrêté du 6 avril 2017 relatif à la signalétique des voitures de transport avec chauffeur",
+        "en": "Order of 6 April 2017 on VTC vehicle markings"
+      }
+    },
+    "arreteProgramme2024": {
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049331579",
+      "label": {
+        "fr": "Arrêté du 20 mars 2024 modifiant le programme des épreuves des examens taxi, VTC et VMDTR",
+        "en": "Order of 20 March 2024 amending the syllabus of the taxi, VTC and VMDTR exams"
+      }
+    },
+    "arpeRevenuCourse": {
+      "url": "https://www.arpe.gouv.fr/wp-content/uploads/2024/02/Avenant-montant-revenu-minimal-par-course-19-Decembre-2023.pdf",
+      "label": {
+        "fr": "ARPE : avenant du 19 décembre 2023 fixant le revenu minimal par course des chauffeurs VTC de plateforme",
+        "en": "ARPE: amendment of 19 December 2023 setting the minimum income per ride for platform VTC drivers"
+      }
+    },
+    "arpeRevenuHoraire": {
+      "url": "https://www.arpe.gouv.fr/wp-content/uploads/2024/02/Accord-revenu-minimal-horaire-et-euro-kilometrique-19-Decembre-2023.pdf",
+      "label": {
+        "fr": "ARPE : accord du 19 décembre 2023 sur la garantie minimale de revenu horaire et kilométrique",
+        "en": "ARPE: agreement of 19 December 2023 on the minimum hourly and per-kilometre income"
+      }
+    },
+    "urssafAe": {
+      "url": "https://www.autoentrepreneur.urssaf.fr/portail/accueil/sinformer-sur-le-statut/lessentiel-du-statut.html",
+      "label": {
+        "fr": "Urssaf, autoentrepreneur.urssaf.fr : l’essentiel du statut (taux, seuils, Acre, formation professionnelle, versement libératoire)",
+        "en": "Urssaf, autoentrepreneur.urssaf.fr: key facts on the micro-enterprise scheme (rates, thresholds, Acre, training levy, flat-rate tax option)"
+      }
+    },
+    "spCotisMicro": {
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F36232",
+      "label": {
+        "fr": "Service-public.fr : cotisations sociales d’un micro-entrepreneur (F36232, vérifié le 1er janvier 2026)",
+        "en": "Service-public.fr: social contributions of a micro-entrepreneur (F36232, checked 1 January 2026)"
+      }
+    },
+    "spFranchiseTva": {
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F21746",
+      "label": {
+        "fr": "Service-public.fr : franchise en base de TVA, seuils 2026 (F21746, vérifié le 1er janvier 2026)",
+        "en": "Service-public.fr: VAT small-business exemption, 2026 thresholds (F21746, checked 1 January 2026)"
+      }
+    },
+    "cgi279": {
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000053562872",
+      "label": {
+        "fr": "Code général des impôts, article 279 b quater : TVA à 10 % sur les transports de voyageurs",
+        "en": "General Tax Code, article 279 b quater: 10% VAT on passenger transport"
+      }
+    },
+    "urssafTns": {
+      "url": "https://www.urssaf.fr/accueil/outils-documentation/taux-baremes/taux-cotisations-ac-plnr.html",
+      "label": {
+        "fr": "Urssaf : taux de cotisations 2026 des artisans, commerçants et professions libérales non réglementées (mis à jour le 27 février 2026)",
+        "en": "Urssaf: 2026 contribution rates for craftspeople, traders and non-regulated professions (updated 27 February 2026)"
+      }
+    },
+    "urssafReforme": {
+      "url": "https://www.urssaf.fr/accueil/independant/comprendre-payer-cotisations/reforme-cotisations-independants.html",
+      "label": {
+        "fr": "Urssaf : réforme de l’assiette sociale des indépendants, abattement de 26 % (mis à jour le 7 mai 2026)",
+        "en": "Urssaf: reform of the self-employed contribution base, 26% allowance (updated 7 May 2026)"
+      }
+    },
+    "decretAssiette": {
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000049888566",
+      "label": {
+        "fr": "Décret n° 2024-688 du 5 juillet 2024 : assiette et barème des cotisations des travailleurs indépendants",
+        "en": "Decree no. 2024-688 of 5 July 2024: contribution base and scale for the self-employed"
+      }
+    },
+    "arreteDea": {
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000045593318",
+      "label": {
+        "fr": "Arrêté du 11 avril 2022 relatif à la formation conduisant au diplôme d’État d’ambulancier et à la formation d’auxiliaire ambulancier",
+        "en": "Order of 11 April 2022 on training for the State ambulance diploma (DEA) and for ambulance assistants"
+      }
+    },
+    "avenantAmbulanciers": {
+      "url": "https://www.legifrance.gouv.fr/conv_coll/id/KALITEXT000052051824",
+      "label": {
+        "fr": "Avenant n° 8 du 6 mai 2025 à l’accord du 16 février 2004 sur les rémunérations des personnels ambulanciers (étendu)",
+        "en": "Amendment no. 8 of 6 May 2025 to the agreement of 16 February 2004 on ambulance staff pay (extended)"
+      }
+    },
+    "spSmic": {
+      "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F2300",
+      "label": {
+        "fr": "Service-public.fr : montant du Smic (F2300, vérifié le 1er juin 2026)",
+        "en": "Service-public.fr: minimum wage (Smic) amount (F2300, checked 1 June 2026)"
+      }
+    },
+    "ctR3120_8": {
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000034389382/",
+      "label": {
+        "fr": "Code des transports, article R3120-8 : condamnations incompatibles avec la profession de conducteur",
+        "en": "Transport Code, article R3120-8: convictions barring entry to the driving profession"
+      }
+    },
+    "registreAide": {
+      "url": "https://registre-vtc.developpement-durable.gouv.fr/public/aide/informations-generales",
+      "label": {
+        "fr": "Registre des VTC (ministère des Transports) : informations générales, pièces, garantie financière, macarons",
+        "en": "VTC register (Ministry of Transport): general information, documents, financial guarantee, stickers"
+      }
+    },
+    "arreteFraisRegistre": {
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000030008473",
+      "label": {
+        "fr": "Arrêté du 30 décembre 2014 relatif au montant des frais d’inscription au registre des VTC",
+        "en": "Order of 30 December 2014 on the VTC register entry fee"
+      }
+    },
+    "dsEquivalence": {
+      "url": "https://www.demarches-simplifiees.fr/commencer/demande-de-carte-pro-de-vtc-equivalence",
+      "label": {
+        "fr": "Démarches simplifiées : demande de carte VTC par équivalence, close depuis le 12 août 2026",
+        "en": "Démarches simplifiées: VTC card by equivalence, closed since 12 August 2026"
+      }
+    },
+    "cmaConditions": {
+      "url": "https://www.exament3p.fr/media/pdf/cma_conditions_d_acces.pdf",
+      "label": {
+        "fr": "CMA : conditions d’accès aux professions de chauffeur de taxi, VTC et VMDTR (octobre 2025)",
+        "en": "CMA: conditions of access to the taxi, VTC and VMDTR professions (October 2025)"
+      }
+    },
+    "cmaFaq": {
+      "url": "https://www.exament3p.fr/id/6",
+      "label": {
+        "fr": "CMA, exament3p.fr : questions fréquentes (mobilité, échec, certificat médical)",
+        "en": "CMA, exament3p.fr: frequently asked questions (mobility, failing, medical certificate)"
+      }
+    },
+    "ctL3121": {
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000023086525/LEGISCTA000023071077",
+      "label": {
+        "fr": "Code des transports, articles L3121-11 et suivants : exercice de l’activité de taxi hors de la zone de l’autorisation",
+        "en": "Transport Code, articles L3121-11 onwards: taxi work outside the licence area"
+      }
+    },
+    "ctL3124Ads": {
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000023086525/LEGISCTA000023071105/",
+      "label": {
+        "fr": "Code des transports, articles L3124-1 à L3124-5 : sanctions liées à l’autorisation de stationnement",
+        "en": "Transport Code, articles L3124-1 to L3124-5: penalties relating to the taxi licence (ADS)"
+      }
+    },
+    "artisanatL125_5": {
+      "url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000047362282",
+      "label": {
+        "fr": "Code de l’artisanat, article L125-5 : activité artisanale de transport de voyageurs par taxi",
+        "en": "Crafts Code, article L125-5: taxi passenger transport as a craft activity"
+      }
+    },
+    "conventionCpam": {
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051272077",
+      "label": {
+        "fr": "Décision du 13 février 2025 : convention-type entre les entreprises de taxis et l’Assurance maladie",
+        "en": "Decision of 13 February 2025: model agreement between taxi firms and the health insurance fund"
+      }
+    },
+    "arreteReservationTaxi": {
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052153181",
+      "label": {
+        "fr": "Arrêté du 6 août 2025 relatif au justificatif de réservation préalable des taxis",
+        "en": "Order of 6 August 2025 on proof of prior booking for taxis"
+      }
+    },
+    "arreteReservationVtc": {
+      "url": "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052153206",
+      "label": {
+        "fr": "Arrêté du 6 août 2025 relatif au justificatif de réservation préalable des VTC et VMDTR",
+        "en": "Order of 6 August 2025 on proof of prior booking for VTCs and VMDTRs"
+      }
+    },
+    "ctR1326": {
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000023086525/LEGISCTA000042466892/",
+      "label": {
+        "fr": "Code des transports, articles R1326-1 à R1326-10 : relations entre chauffeurs et plateformes",
+        "en": "Transport Code, articles R1326-1 to R1326-10: relations between drivers and platforms"
+      }
+    },
+    "spTarifsTaxi": {
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F22127",
+      "label": {
+        "fr": "Service-public.fr : tarifs, équipements et obligations d’affichage des taxis (F22127, vérifié le 13 août 2026)",
+        "en": "Service-public.fr: taxi fares, equipment and display rules (F22127, checked 13 August 2026)"
+      }
+    },
+    "arreteSignaletique2025": {
+      "url": "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000052019590/",
+      "label": {
+        "fr": "Arrêté du 24 juillet 2025 modifiant l’arrêté du 6 avril 2017 sur la signalétique des VTC",
+        "en": "Order of 24 July 2025 amending the 6 April 2017 order on VTC markings"
+      }
+    },
+    "spFranchiseMicro": {
+      "url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23267",
+      "label": {
+        "fr": "Service-public.fr : régime fiscal de la micro-entreprise (F23267, vérifié le 13 mai 2026)",
+        "en": "Service-public.fr: micro-enterprise tax regime (F23267, checked 13 May 2026)"
+      }
+    },
+    "ctL3121Ads": {
+      "url": "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000023086525/LEGISCTA000023071053/",
+      "label": {
+        "fr": "Code des transports, articles L3121-1 à L3121-8 : autorisations de stationnement des taxis",
+        "en": "Transport Code, articles L3121-1 to L3121-8: taxi licences (ADS)"
+      }
+    }
+  },
+  "acces": {
+    "_source": "spVtc, spTaxi, cmaT3p, ctR3122",
+    "examen_complet": 241,
+    "examen_mobilite": 168,
+    "examen_admission_seule": 118,
+    "examen_complet_2025": 237,
+    "carte_pro_environ": 60,
+    "registre_inscription": 170,
+    "registre_plafond_frais": 250,
+    "registre_delai_mois": 2,
+    "vignette_environ": 35,
+    "vignette_temporaire_jours": 30,
+    "garantie_financiere_par_vehicule": 1500,
+    "location_longue_mois": 6,
+    "formation_cout_min": 400,
+    "formation_cout_max": 3000,
+    "formation_heures_min": 50,
+    "formation_heures_max": 300,
+    "permis_anciennete_ans": 3,
+    "permis_conduite_accompagnee_ans": 2,
+    "certificat_medical_validite_ans": 2,
+    "psc1_validite_ans": 2,
+    "carte_validite_ans": 5,
+    "registre_validite_ans": 5,
+    "formation_continue_heures": 14,
+    "formation_continue_avant_mois": 3,
+    "changement_registre_jours": 15,
+    "amende_carte_invalide": 1500,
+    "amende_sans_assurance": 3750,
+    "sanction_prison_ans": 3,
+    "sanction_amende_personne": 45000,
+    "sanction_amende_societe": 225000,
+    "sanction_suspension_permis_ans": 5,
+    "sanction_immobilisation_ans": 1,
+    "stationnement_gare_max_h": 1,
+    "equivalence_fin": "2026-08-12",
+    "loi_renforcement": "2026-06-27",
+    "examen_mobilite_2025": 165,
+    "examen_admission_seule_2025": 116,
+    "guichet_piece_manquante_jours": 15,
+    "registre_recours_ponctuel_mois": 1,
+    "registre_renouvellement_avant_mois": 3,
+    "registre_interdiction_reinscription_ans": 3,
+    "ancienne_experience_ans": 1,
+    "ancienne_periode_ans": 10,
+    "decret_equivalence_date": "2026-08-05",
+    "decret_equivalence_jo": "2026-08-11",
+    "stage_periodes": 4,
+    "stage_periode_heures": 3.5,
+    "stage_fraction_max_mois": 2,
+    "mobilite_module_min_heures": 7
+  },
+  "examen": {
+    "_source": "cmaReglement",
+    "tronc_commun": [
+      {
+        "code": "A",
+        "fr": "Réglementation du T3P, prévention des discriminations et des violences sexuelles et sexistes",
+        "en": "T3P regulations, preventing discrimination and sexual and sexist violence",
+        "qcm": 10,
+        "qrc": 5,
+        "minutes": 45,
+        "eliminatoire": 6,
+        "coef": 3
+      },
+      {
+        "code": "B",
+        "fr": "Gestion",
+        "en": "Business management",
+        "qcm": 16,
+        "qrc": 2,
+        "minutes": 45,
+        "eliminatoire": 6,
+        "coef": 2
+      },
+      {
+        "code": "C",
+        "fr": "Sécurité routière",
+        "en": "Road safety",
+        "qcm": 20,
+        "qrc": 0,
+        "minutes": 30,
+        "eliminatoire": 6,
+        "coef": 3
+      },
+      {
+        "code": "D",
+        "fr": "Français",
+        "en": "French",
+        "qcm": 7,
+        "qrc": 3,
+        "minutes": 30,
+        "eliminatoire": 6,
+        "coef": 2
+      },
+      {
+        "code": "E",
+        "fr": "Anglais",
+        "en": "English",
+        "qcm": 20,
+        "qrc": 0,
+        "minutes": 30,
+        "eliminatoire": 4,
+        "coef": 1
+      }
+    ],
+    "vtc": [
+      {
+        "code": "F(V)",
+        "fr": "Développement commercial",
+        "en": "Business development",
+        "qcm": 12,
+        "qrc": 4,
+        "minutes": 30,
+        "eliminatoire": 6,
+        "coef": 3
+      },
+      {
+        "code": "G(V)",
+        "fr": "Réglementation nationale spécifique de l’activité de VTC",
+        "en": "National rules specific to VTC work",
+        "qcm": 6,
+        "qrc": 2,
+        "minutes": 20,
+        "eliminatoire": 6,
+        "coef": 3
+      }
+    ],
+    "taxi": [
+      {
+        "code": "F(T)",
+        "fr": "Connaissance du territoire et réglementation locale",
+        "en": "Local area knowledge and local rules",
+        "qcm": 6,
+        "qrc": 2,
+        "minutes": 20,
+        "eliminatoire": 6,
+        "coef": 3
+      },
+      {
+        "code": "G(T)",
+        "fr": "Réglementation nationale spécifique aux taxis",
+        "en": "National rules specific to taxis",
+        "qcm": 12,
+        "qrc": 4,
+        "minutes": 30,
+        "eliminatoire": 6,
+        "coef": 3
+      }
+    ],
+    "admissibilite_moyenne": 10,
+    "pratique_duree_max_min": 45,
+    "pratique_conduite_min": 20,
+    "pratique_preparation_min": 6,
+    "pratique_admis": 12,
+    "pratique_bareme_vtc": {
+      "parcours": 3,
+      "conduite": 10,
+      "client": 5,
+      "facturation": 2
+    },
+    "pratique_bareme_taxi": {
+      "parcours": 2,
+      "conduite": 10,
+      "client": 5,
+      "facturation": 3
+    },
+    "pratique_tentatives_supplementaires": 2,
+    "pratique_delai_mois": 12,
+    "mobilite_validite_ans": 3,
+    "reglement": {
+      "_source": "cmaReglement (articles cités dans les guides)",
+      "sessions_par_an": 11,
+      "instruction_jours_ouvres": 5,
+      "garantie_mois": 4,
+      "convocation_ecrit_jours": 7,
+      "convocation_pratique_mois": 2,
+      "resultats_mois": 1,
+      "consultation_copie_ans": 1,
+      "reclamation_mois": 2,
+      "fraude_exclusion_ans": 5,
+      "retrait_carte_ans": 10,
+      "force_majeure_jours": 7,
+      "handicap_demande_mois": 1,
+      "jury_experience_ans": 5,
+      "jury_periode_ans": 10,
+      "permis_hors_ue_anciennete_ans": 3,
+      "permis_hors_ue_residence_ans": 1,
+      "contestation_mois": 2
+    }
+  },
+  "vehicule_vtc": {
+    "_source": "arreteVehicule, spVtc",
+    "age_max_ans": 7,
+    "portes_min": 4,
+    "longueur_min_m": 4.5,
+    "largeur_min_m": 1.7,
+    "puissance_min_kw": 84,
+    "places_min": 4,
+    "places_max": 9,
+    "vmdtr_puissance_min_kw": 40,
+    "vmdtr_age_max_ans": 5
+  },
+  "plateformes": {
+    "_source": "spVtc, arpeRevenuCourse, arpeRevenuHoraire",
+    "revenu_min_course": 9,
+    "revenu_min_heure": 30,
+    "revenu_min_km": 1
+  },
+  "taxi": {
+    "_source": "spTaxi",
+    "ads_prix_min": 30000,
+    "ads_prix_max": 300000,
+    "ads_prix_paris_environ": 190000,
+    "ads_prix_nice_environ": 250000,
+    "ads_loyer_paris_mois_environ": 3500,
+    "ads_date_incessibilite": "2014-10-01",
+    "ads_gratuite_validite_ans": 5,
+    "ads_renouvellement_avant_mois": 3,
+    "ads_cession_ancienne_ans": 15,
+    "ads_cession_achetee_ans": 5,
+    "ads_priorite_activite_ans": 2,
+    "location_gerance_min_ans": 1,
+    "mobilite_max_departements": 4,
+    "mobilite_heures": 14,
+    "mobilite_heures_paris": 35,
+    "cpam_equipement_avant": "2027-01-01",
+    "cpam_convention_ans": 5,
+    "le_taxi_suspension": "2026-06-12",
+    "cpam_tarifs_depuis": "2025-10-01",
+    "partage_detour_km": 10,
+    "partage_rayon_km": 30,
+    "partage_attente_min": 45,
+    "places_max": 9,
+    "carte_demande_tardive_ans": 5,
+    "note_obligatoire_des": 25,
+    "note_conservation_ans": 2,
+    "ads_priorite_periode_ans": 5,
+    "ads_prix_verifies_le": "2026-07-13"
+  },
+  "micro": {
+    "_source": "urssafAe, spCotisMicro",
+    "seuil_services": 83600,
+    "seuil_services_2025": 77700,
+    "taux_bic_services": 0.212,
+    "taux_acre_debut_avant_juillet": 0.106,
+    "taux_acre_debut_des_juillet": 0.159,
+    "cfp_artisan": 0.003,
+    "versement_liberatoire_bic_services": 0.017,
+    "abattement_bic_services": 0.5
+  },
+  "tva": {
+    "_source": "cgi279, spFranchiseTva",
+    "taux_transport": 0.1,
+    "taux_normal": 0.2,
+    "franchise_services": 37500,
+    "franchise_services_majore": 41250
+  },
+  "tns": {
+    "_source": "urssafTns, urssafReforme, decretAssiette",
+    "pass": 48060,
+    "abattement_taux": 0.26,
+    "abattement_min_pass": 0.0176,
+    "abattement_max_pass": 1.3,
+    "maladie": [
+      [
+        0,
+        0
+      ],
+      [
+        0.2,
+        0
+      ],
+      [
+        0.4,
+        0.015
+      ],
+      [
+        0.6,
+        0.04
+      ],
+      [
+        1.1,
+        0.065
+      ],
+      [
+        2,
+        0.077
+      ],
+      [
+        3,
+        0.085
+      ]
+    ],
+    "maladie_au_dela_3_pass": 0.065,
+    "ij_taux": 0.005,
+    "ij_plafond_pass": 5,
+    "ij_base_min_pass": 0.4,
+    "retraite_base_plafonnee": 0.1787,
+    "retraite_base_deplafonnee": 0.0072,
+    "retraite_base_assiette_min": 5409,
+    "retraite_compl_t1": 0.081,
+    "retraite_compl_t2": 0.091,
+    "retraite_compl_plafond_pass": 4,
+    "invalidite_taux": 0.013,
+    "invalidite_plafond_pass": 1,
+    "invalidite_base_min_pass": 0.115,
+    "af": [
+      [
+        1.1,
+        0
+      ],
+      [
+        1.4,
+        0.031
+      ]
+    ],
+    "csg_crds": 0.097,
+    "cfp_artisan_forfait": 139
+  },
+  "ambulancier": {
+    "_source": "arreteDea, avenantAmbulanciers, spSmic",
+    "dea_heures": 801,
+    "dea_heures_institut": 556,
+    "dea_heures_stage": 245,
+    "dea_semaines_stage": 7,
+    "dea_duree_max_ans": 2,
+    "stage_observation_heures": 70,
+    "auxiliaire_heures": 70,
+    "selection_admissibilite_min": 10,
+    "entretien_max_min": 20,
+    "grille_date": "2025-06-01",
+    "taux_horaire_niveau1": 11.89,
+    "taux_horaire_niveau2": 11.9,
+    "taux_horaire_niveau3": 12.79,
+    "indemnite_dimanche_ferie": 23.9,
+    "smic_horaire": 12.31,
+    "duree_legale_mensuelle_h": 151.67,
+    "dea": {
+      "_source": "arreteDea (articles cités dans formation-ambulancier.ts)",
+      "blocs": 5,
+      "modules": 10,
+      "distance_max_part": 0.7,
+      "entretien_presentation_min": 5,
+      "entretien_echange_min": 15,
+      "entretien_eliminatoire": 8,
+      "bloc_note_min": 10,
+      "dispense_stage_auxiliaire_mois": 1,
+      "dispense_stage_periode_ans": 3,
+      "pompiers_experience_ans": 3,
+      "auxiliaire_voie_directe_ans": 1,
+      "rentrees_par_an_min": 2,
+      "report_max_ans": 2,
+      "stages_courts_semaines": 2,
+      "stage_long_semaines": 3
+    },
+    "passerelle": {
+      "_source": "arreteDea, art. 6 et 9",
+      "auxiliaire_mois_sans_stage": 1,
+      "auxiliaire_ans_dossier_seul": 1,
+      "periode_ans": 3
+    },
+    "smic_seuil_inflation": 0.02
+  }
+}

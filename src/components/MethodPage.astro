@@ -1,0 +1,101 @@
+---
+/** Méthode et sources (page de confiance, RECETTE §8.2) : formules, sources, tests, limites. */
+import PageLayout from '../layouts/PageLayout.astro';
+import { route, type Locale } from '../i18n/routes';
+import { P } from '../lib/engine/params';
+import { formatMoney, formatPercent, displayDate } from '../lib/format';
+import { breadcrumbSchema, webPageSchema } from '../lib/seo';
+import { LAST_UPDATED, CONTACT_EMAIL, REVIEW_CYCLE_MONTHS } from '../data/site-config';
+interface Props { lang: Locale }
+const { lang } = Astro.props;
+const fr = lang === 'fr';
+const $ = (n: number) => formatMoney(n, 0, lang);
+const pc = (x: number, d = 1) => formatPercent(x, d, lang);
+const M = P.micro, T = P.tns, V = P.tva, A = P.acces;
+const title = fr ? 'Méthode TaxiNoir 2026 : sources, formules, limites du calcul' : 'TaxiNoir Method 2026: Sources, Formulas, Calculator Limits';
+const description = fr ? 'Méthode 2026 de TaxiNoir : d’où viennent frais, taux et seuils, comment le revenu net est calculé, quels tests vérifient le moteur, ce qu’il ne sait pas faire.' : 'TaxiNoir 2026 method: where fees, rates and thresholds come from, how net income is calculated, which tests check the engine and what the calculators cannot do.';
+const h1 = fr ? 'Méthode et sources' : 'Method and sources';
+const path = route('method', lang);
+const sources = Object.values(P.sources);
+const maxCompl = T.retraite_compl_t1 * T.pass + T.retraite_compl_t2 * (T.retraite_compl_plafond_pass - 1) * T.pass;
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: h1, description, path, lang }), breadcrumbSchema([{ name: fr ? 'Accueil' : 'Home', path: route('home', lang) }, { name: h1, path }])]} breadcrumbs={[{ label: h1 }]}>
+  <header class="mb-6"><h1 class="text-3xl font-bold text-navy-900 md:text-4xl">{h1}</h1></header>
+  {fr ? (
+  <div class="prose prose-slate max-w-none">
+    <p>Toutes les valeurs réglementaires du site vivent dans un seul fichier de paramètres, daté du <time datetime={P.retrieved_at}>{displayDate(P.retrieved_at, 'fr-FR')}</time>. Chaque bloc y indique sa source. Les pages et les simulateurs lisent ce fichier : une valeur corrigée l’est partout à la fois, et aucun montant réglementaire n’est écrit en dur dans un texte.</p>
+    <h2>Le revenu net</h2>
+    <p>Le simulateur part du chiffre d’affaires encaissé (courses × prix moyen × semaines, ou un montant annuel saisi) et retire dans l’ordre :</p>
+    <ol>
+      <li><strong>La TVA</strong> : franchise jusqu’à {$(V.franchise_services)} de chiffre d’affaires l’année précédente et {$(V.franchise_services_majore)} l’année en cours (service-public, F21746) ; au-delà, ou sur option, le prix payé contient {pc(V.taux_transport, 0)} de TVA (CGI, art. 279 b quater).</li>
+      <li><strong>La commission</strong> de la plateforme, au taux saisi par l’utilisateur. Le site ne fournit aucun taux de commission : la valeur par défaut est une hypothèse d’exemple.</li>
+      <li><strong>Les frais</strong> saisis : véhicule, carburant, assurance, entretien, licence, autres.</li>
+      <li><strong>Les cotisations</strong>. En micro-entreprise : {pc(M.taux_bic_services)} du chiffre d’affaires hors taxe ({pc(M.taux_acre_debut_des_juillet)} avec l’Acre pour un début d’activité depuis le 1er juillet 2026), plus {pc(M.cfp_artisan)} de contribution à la formation professionnelle des artisans, et {pc(M.versement_liberatoire_bic_services)} de versement libératoire sur option (Urssaf). Au réel : barème 2026 des artisans (Urssaf, mis à jour le 27 février 2026) appliqué au bénéfice diminué d’un abattement de {pc(T.abattement_taux, 0)}, borné entre {pc(T.abattement_min_pass, 2)} et {pc(T.abattement_max_pass, 0)} du Pass ({$(T.pass)}), avec les assiettes minimales et la contribution forfaitaire à la formation de {$(T.cfp_artisan_forfait)}.</li>
+    </ol>
+    <p>Le résultat est un revenu avant impôt sur le revenu. Le net horaire divise le net annuel par les heures saisies.</p>
+    <h2>Les tests qui bloquent la publication</h2>
+    <ul>
+      <li>Cotisations minimales publiées par l’Urssaf pour 2026, à l’euro près : indemnités journalières, retraite de base, invalidité-décès, formation professionnelle.</li>
+      <li>Plafonds publiés : indemnités journalières et invalidité-décès.</li>
+      <li>Un calcul complet au réel, refait à la main, à {formatMoney(40000, 0, 'fr')} de bénéfice.</li>
+      <li>Seuils de franchise de TVA, de part et d’autre de chaque borne.</li>
+      <li>Critères de l’arrêté du 26 mars 2015 sur les véhicules, aux valeurs exactes et juste en dessous ; exemption des hybrides et des électriques.</li>
+      <li>Moyenne pondérée et notes éliminatoires de l’examen, d’après le règlement des CMA.</li>
+      <li>Calendrier de renouvellement, y compris les fins de mois.</li>
+      <li>Chaque mini-simulateur, dans les deux langues, sans valeur manquante.</li>
+    </ul>
+    <h2>Un écart relevé dans une source</h2>
+    <p>La page de l’Urssaf sur les taux 2026 annonce une cotisation maximale de retraite complémentaire de 17 494 €. Le barème de la même page (8,10 % jusqu’à un Pass, 9,10 % entre un et quatre Pass) donne {$(maxCompl)}. Le moteur applique le barème.</p>
+    <h2>Ce que les simulateurs ne font pas</h2>
+    <ul>
+      <li>Ils ne calculent pas l’impôt sur le revenu du foyer, la cotisation foncière des entreprises ni la taxe pour frais de chambre de métiers.</li>
+      <li>Ils ne simulent pas la SASU, dont les cotisations d’assimilé salarié dépendent de paramètres que nous n’avons pas encore sourcés.</li>
+      <li>Ils ne connaissent ni le prix des formations, ni celui d’un médecin agréé, ni celui d’un véhicule : ce sont vos saisies.</li>
+      <li>Ils ne donnent aucune statistique de revenu moyen, faute de source publique fiable.</li>
+    </ul>
+    <h2>Mises à jour</h2>
+    <p>Revue complète au moins tous les {REVIEW_CYCLE_MONTHS} mois, et à chaque changement de texte : tarifs de l’examen au 1er janvier, barèmes de l’Urssaf, décrets et lois sur le transport public particulier de personnes. Une erreur signalée à <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> est vérifiée sur la source, corrigée, puis transformée en test. Voir la <a href={route('editorial', lang)}>charte éditoriale</a>.</p>
+    <h2>Toutes les sources</h2>
+    <ul>{sources.map((s) => <li><a href={s.url} rel="nofollow noopener" target="_blank">{s.label.fr}</a></li>)}</ul>
+    <p class="text-sm text-navy-600">Dernière vérification : <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'fr-FR')}</time>.</p>
+  </div>
+  ) : (
+  <div class="prose prose-slate max-w-none">
+    <p>Every regulatory value on the site lives in one parameter file, dated <time datetime={P.retrieved_at}>{displayDate(P.retrieved_at, 'en-GB')}</time>, where each block names its source. Pages and calculators read that file: a corrected value changes everywhere at once, and no regulated amount is typed into a text by hand.</p>
+    <h2>Net income</h2>
+    <p>The calculator starts from takings collected (rides × average fare × weeks, or an annual amount you enter) and deducts, in order:</p>
+    <ol>
+      <li><strong>VAT</strong>: exempt up to {$(V.franchise_services)} of turnover in the previous year and {$(V.franchise_services_majore)} in the current year (service-public, F21746); above that, or if you opt in, the fare contains {pc(V.taux_transport, 0)} VAT (General Tax Code, art. 279 b quater).</li>
+      <li><strong>Commission</strong> charged by a platform, at the rate you enter. The site supplies no commission rate: the default is an example assumption.</li>
+      <li><strong>Costs</strong> you enter: vehicle, fuel, insurance, servicing, licence, other.</li>
+      <li><strong>Contributions</strong>. Micro scheme: {pc(M.taux_bic_services)} of turnover excluding VAT ({pc(M.taux_acre_debut_des_juillet)} with Acre for a business started since 1 July 2026), plus {pc(M.cfp_artisan)} craft training levy, and {pc(M.versement_liberatoire_bic_services)} flat-rate income tax if chosen (Urssaf). Real profit: the 2026 craftspeople’s scale (Urssaf, updated 27 February 2026) applied to profit less a {pc(T.abattement_taux, 0)} allowance, capped between {pc(T.abattement_min_pass, 2)} and {pc(T.abattement_max_pass, 0)} of the social security ceiling ({$(T.pass)}), with minimum bases and the {$(T.cfp_artisan_forfait)} flat training levy.</li>
+    </ol>
+    <p>The result is income before income tax. The hourly figure divides annual net income by the hours entered.</p>
+    <h2>Tests that block publication</h2>
+    <ul>
+      <li>Minimum contributions published by Urssaf for 2026, to the euro: sickness benefit, basic pension, invalidity and death cover, training levy.</li>
+      <li>Published caps: sickness benefit and invalidity and death cover.</li>
+      <li>A full real-profit calculation redone by hand at {formatMoney(40000, 0, 'en')} profit.</li>
+      <li>VAT exemption thresholds, on either side of each limit.</li>
+      <li>The vehicle criteria of the order of 26 March 2015, at the exact values and just below; the hybrid and electric exemption.</li>
+      <li>Weighted average and elimination marks of the exam, per the CMA rules.</li>
+      <li>The renewal calendar, month ends included.</li>
+      <li>Every small calculator, in both languages, with no missing value.</li>
+    </ul>
+    <h2>A discrepancy found in a source</h2>
+    <p>Urssaf’s 2026 rates page gives a maximum supplementary pension contribution of €17,494. The scale on the same page (8.10% up to one ceiling, 9.10% between one and four) gives {$(maxCompl)}. The engine follows the scale.</p>
+    <h2>What the calculators do not do</h2>
+    <ul>
+      <li>No household income tax, local business tax (CFE) or chamber of trades levy.</li>
+      <li>No SASU company: an employee-like chairman’s contributions depend on parameters we have not yet sourced.</li>
+      <li>No price for training, an approved doctor or a vehicle: those are your inputs.</li>
+      <li>No average earnings statistics, for want of a reliable public source.</li>
+    </ul>
+    <h2>Updates</h2>
+    <p>A full review at least every {REVIEW_CYCLE_MONTHS} months, and whenever a text changes: exam fees each 1 January, Urssaf scales, decrees and laws on passenger transport. An error reported to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> is checked against the source, corrected, then turned into a test. See the <a href={route('editorial', lang)}>editorial policy</a>.</p>
+    <h2>All sources</h2>
+    <ul>{sources.map((s) => <li><a href={s.url} rel="nofollow noopener" target="_blank">{s.label.en}</a></li>)}</ul>
+    <p class="text-sm text-navy-600">Last checked: <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'en-GB')}</time>.</p>
+  </div>
+  )}
+</PageLayout>
