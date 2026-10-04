@@ -43,5 +43,7 @@ export function parseLocaleNumber(input: string): number {
  *  jamais le format machine. Fuseau UTC forcé, sinon la date recule d'un jour à l'ouest de Greenwich.
  *  Le format ISO reste dans l'attribut `datetime` de la balise <time>. */
 export function displayDate(iso: string, langTag: string): string {
-  return new Date(`${iso}T00:00:00Z`).toLocaleDateString(langTag, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const s = new Date(`${iso}T00:00:00Z`).toLocaleDateString(langTag, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+  // Français : « 1er novembre », jamais « 1 novembre » (ordinal du premier jour du mois).
+  return langTag.startsWith('fr') ? s.replace(/^1 /, '1er ') : s;
 }
