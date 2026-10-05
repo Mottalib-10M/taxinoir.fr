@@ -21,7 +21,7 @@ export default defineGuide({
   order: 50,
   mini: 'formationVtc',
   miniHref: 'cout-acces-metier',
-  related: ['examen-vtc', 'devenir-chauffeur-vtc', 'cout-acces-metier', 'carte-vtc', 'carte-vtc-equivalence'],
+  related: ['examen-vtc', 'devenir-chauffeur-vtc', 'cout-acces-metier', 'carte-vtc', 'carte-vtc-equivalence', 'formation-taxi'],
   sources: ['spVtc', 'cmaReglement', 'cmaFaq', 'cmaT3p', 'arreteProgramme2024'],
   fr: {
     slug: 'formation-vtc',

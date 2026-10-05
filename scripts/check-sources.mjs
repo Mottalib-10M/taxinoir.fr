@@ -63,14 +63,16 @@ const check = async (u, essai = 1) => {
     const body = r.ok ? (await r.text()).slice(0, 4000) : '';
     // 429 : le serveur limite la cadence (Clemson HGIC) ; on patiente puis on réessaie une fois.
     if (r.status === 429 && essai < 2) { await new Promise((ok) => setTimeout(ok, 5000)); return check(u, 2); }
-    if (r.status === 403 || r.status === 429) blocked.push(`${r.status} ${u}`);
+    // 406 : refus du client robot (uber.com, 2026-10-04 : 406 au script, 200 dans un navigateur).
+    if (r.status === 403 || r.status === 406 || r.status === 429) blocked.push(`${r.status} ${u}`);
     else if (r.status >= 500) { if (essai < 2) return check(u, 2); down.push(`${r.status} ${u}`); }
     else if (r.status >= 400) dead.push(`${r.status} ${u}`);
     else if (NOT_FOUND.test(body.replace(/<[^>]+>/g, ' '))) dead.push(`200 mais « introuvable » ${u}`);
   } catch (e) {
     // Chaîne de certificats incomplète côté serveur (Missouri Botanical Garden, 2026-10-04) : Node
     // refuse, un navigateur et curl la complètent. On redemande donc à curl le seul code HTTP.
-    if (/CERT|LEAF|ISSUER/.test(e.cause?.code || '')) {
+    // Même repli quand le serveur coupe la connexion au client Node (Urssaf : ECONNRESET au script, 200 à curl).
+    if (e.name !== 'TimeoutError') {
       try {
         const { stdout } = await run('curl', ['-s', '-o', '/dev/null', '-w', '%{http_code}', '-L', '-m', '30', '-A', 'Mozilla/5.0 (check-sources)', u]);
         const s = +stdout;

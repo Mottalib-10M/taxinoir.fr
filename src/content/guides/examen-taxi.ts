@@ -36,7 +36,7 @@ export default defineGuide({
   order: 20,
   mini: 'notePratiqueTaxi',
   miniHref: 'cout-acces-metier',
-  related: ['devenir-taxi', 'licence-taxi', 'examen-vtc', 'cout-acces-metier', 'formation-continue-vtc-taxi'],
+  related: ['devenir-taxi', 'licence-taxi', 'examen-vtc', 'cout-acces-metier', 'formation-continue-vtc-taxi', 'formation-taxi'],
   sources: ['cmaReglement', 'cmaT3p', 'cmaFaq', 'arreteProgramme2024', 'spTaxi', 'spTarifsTaxi'],
   fr: {
     slug: 'examen-taxi',

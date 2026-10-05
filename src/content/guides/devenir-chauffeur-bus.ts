@@ -11,7 +11,7 @@ export default defineGuide({
   order: 100,
   mini: 'permisBus',
   miniHref: 'salaire-chauffeur-bus',
-  related: ['salaire-chauffeur-bus', 'capacite-transport-personnes', 'licence-transport', 'devenir-taxi', 'devenir-chauffeur-vtc'],
+  related: ['salaire-chauffeur-bus', 'capacite-transport-personnes', 'licence-transport', 'devenir-taxi', 'devenir-chauffeur-vtc', 'chauffeur-poids-lourd'],
   sources: ['crR221', 'ctFimo', 'ctFco', 'crR311_1', 'nomenclatureTrv'],
   fr: {
     slug: 'devenir-chauffeur-bus',

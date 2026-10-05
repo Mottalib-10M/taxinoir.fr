@@ -20,7 +20,7 @@ export default defineGuide({
   order: 40,
   mini: 'salaireBus',
   miniHref: 'devenir-chauffeur-bus',
-  related: ['devenir-chauffeur-bus', 'salaire-ambulancier', 'salaire-taxi', 'salaire-chauffeur-vtc', 'revenus-chauffeur-region'],
+  related: ['devenir-chauffeur-bus', 'salaire-ambulancier', 'salaire-taxi', 'salaire-chauffeur-vtc', 'revenus-chauffeur-region', 'chauffeur-poids-lourd'],
   sources: ['avenantTrv120', 'nomenclatureTrv', 'avenantTrv115', 'spSmic'],
   fr: {
     slug: 'salaire-chauffeur-bus',

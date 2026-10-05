@@ -11,7 +11,7 @@ export default defineGuide({
   order: 90,
   mini: 'licenceTransport',
   miniHref: 'capacite-transport-personnes',
-  related: ['capacite-transport-personnes', 'devenir-chauffeur-bus', 'licence-taxi', 'registre-vtc', 'taxi-ou-vtc'],
+  related: ['capacite-transport-personnes', 'devenir-chauffeur-bus', 'licence-taxi', 'registre-vtc', 'taxi-ou-vtc', 'devenir-chauffeur-livreur'],
   sources: ['ctR3113Licences', 'ctR3113CapFin', 'ctL3113', 'crR311_1', 'ctL3112_1'],
   fr: {
     slug: 'licence-transport',
