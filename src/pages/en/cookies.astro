@@ -1,15 +1,27 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { CONTACT_EMAIL, LAST_UPDATED, SITE_NAMES } from '../../data/site-config';
+import { CONTACT_EMAIL, SITE_NAMES } from '../../data/site-config';
 import { route } from '../../i18n/routes';
 const lang = 'en';
+const updated = '2026-10-05';
 ---
-<PageLayout title={`Cookies – ${SITE_NAMES[lang]}`} description="Which cookies this site sets: none today. What would change if analytics were ever added, and how your consent would be asked for before anything is loaded." lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
+<PageLayout title={`Cookies – ${SITE_NAMES[lang]}`} description="Cookies on TaxiNoir in France: Microsoft Clarity and Google Analytics 4 load without a banner, how long each cookie lasts and how to block audience measurement." lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
   <div class="prose prose-slate max-w-none">
     <h1>Cookies</h1>
-    <p>This page complements the <a href={route('privacy', lang)}>privacy policy</a>.</p>
-    <h2>No cookies today</h2><p>The calculators run entirely in your browser and set no cookie. The site loads no analytics, no advertising and no social network.</p>
-    <h2>If that changes</h2><p>If analytics or advertising is ever added, it will only load after your consent through a banner that also lets you refuse and change your mind at any time; this page will then list every cookie and its lifetime.</p>
-    <p>Questions: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Updated: {LAST_UPDATED}.</p>
+    <p>This page lists the cookies set during a visit and explains how to block them. It complements the <a href={route('privacy', lang)}>privacy policy</a>.</p>
+    <h2>The calculators do not need any</h2>
+    <p>The net income calculator, the VAT tool, the renewal calendar and the other tools for taxi, VTC and ambulance drivers run entirely in your browser. Rides, fares, costs and turnover are never stored in a cookie. The only cookies on the site come from the audience measurement described below.</p>
+    <h2>Audience measurement</h2>
+    <h3>Microsoft Clarity</h3>
+    <p>Clarity loads as soon as the page opens: the site shows no consent banner. It helps us see how the guides and calculators are actually used, through session recordings (clicks, scrolling, movement on the page) and heatmaps. Amounts and other values you type into the calculator fields are masked in your browser before anything is sent. Cookies set: <code>_clck</code> (one year) and <code>_clsk</code> (one day); Microsoft may also set <code>MUID</code> and <code>CLID</code> on its own domains.</p>
+    <h3>Google Analytics 4</h3>
+    <p>Google Analytics 4, provided by Google Ireland Limited, loads the same way, without a banner. It counts page views and shows where visits come from, how long they last, which kind of device is used and the approximate location. Cookies set: <code>_ga</code> and <code>_ga_TEF1YHQ9X0</code>, two years each. Data is kept for 14 months.</p>
+    <h3>Advertising and social networks</h3>
+    <p>No advertising and no social buttons: no advertising cookie is set.</p>
+    <h2>The calculator embedded on other sites</h2>
+    <p>The iframe version of the calculator offered to other sites loads neither Clarity nor Google Analytics and sets no cookie.</p>
+    <h2>Blocking these cookies</h2>
+    <p>To object to audience measurement, block third-party cookies or the clarity.ms and google-analytics.com domains in your browser settings or with a blocker, or install the <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">Google Analytics opt-out add-on</a>. Then clear the site’s data to remove cookies already set. The guides and calculators work just as well without them.</p>
+    <p>Questions: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Updated: {updated}.</p>
   </div>
 </PageLayout>

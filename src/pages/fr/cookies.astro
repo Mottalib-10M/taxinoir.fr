@@ -1,15 +1,27 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
-import { CONTACT_EMAIL, LAST_UPDATED, SITE_NAMES } from '../../data/site-config';
+import { CONTACT_EMAIL, SITE_NAMES } from '../../data/site-config';
 import { route } from '../../i18n/routes';
 const lang = 'fr';
+const updated = '2026-10-05';
 ---
-<PageLayout title={`Cookies – ${SITE_NAMES[lang]}`} description="Quels cookies ce site dépose : aucun aujourd’hui. Ce qui changerait si une mesure d’audience était ajoutée, et comment votre accord serait alors recueilli." lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
+<PageLayout title={`Cookies – ${SITE_NAMES[lang]}`} description="Cookies TaxiNoir en France : Microsoft Clarity et Google Analytics 4 chargés sans bandeau, durée de chaque cookie et moyens de bloquer la mesure d’audience." lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
   <div class="prose prose-slate max-w-none">
     <h1>Cookies</h1>
-    <p>Cette page complète la <a href={route('privacy', lang)}>politique de confidentialité</a>.</p>
-    <h2>Aucun cookie aujourd’hui</h2><p>Les simulateurs fonctionnent entièrement dans votre navigateur et ne déposent aucun cookie. Le site ne charge ni mesure d’audience, ni publicité, ni réseau social.</p>
-    <h2>Si cela change</h2><p>Si une mesure d’audience ou une publicité est ajoutée, elle ne sera chargée qu’après votre accord, recueilli par un bandeau qui permettra aussi de refuser et de revenir sur votre choix à tout moment ; cette page listera alors chaque cookie et sa durée.</p>
-    <p>Questions : <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Mise à jour : {LAST_UPDATED}.</p>
+    <p>Cette page liste les cookies déposés lors d’une visite et explique comment les bloquer. Elle complète la <a href={route('privacy', lang)}>politique de confidentialité</a>.</p>
+    <h2>Les simulateurs n’en ont pas besoin</h2>
+    <p>Le simulateur de revenu net, le calcul de TVA, le calendrier de renouvellement et les autres outils pour chauffeurs de taxi, de VTC ou d’ambulance tournent entièrement dans votre navigateur. Courses, tarifs, frais et chiffre d’affaires ne sont placés dans aucun cookie. Les seuls cookies du site viennent de la mesure d’audience décrite ci-dessous.</p>
+    <h2>Mesure d’audience</h2>
+    <h3>Microsoft Clarity</h3>
+    <p>Clarity est chargé dès l’ouverture de la page : le site n’affiche pas de bandeau de consentement. Il sert à voir comment les guides et les simulateurs sont réellement utilisés, au moyen d’enregistrements de session (clics, défilement, déplacements dans la page) et de cartes de chaleur. Les montants et autres valeurs que vous tapez dans les champs des simulateurs sont masqués dans votre navigateur avant tout envoi. Cookies déposés : <code>_clck</code> (un an) et <code>_clsk</code> (un jour) ; Microsoft peut aussi déposer <code>MUID</code> et <code>CLID</code> sur ses propres domaines.</p>
+    <h3>Google Analytics 4</h3>
+    <p>Google Analytics 4, fourni par Google Ireland Limited, est chargé de la même façon, sans bandeau. Il compte les pages vues et indique d’où viennent les visites, combien de temps elles durent, sur quel type d’appareil et depuis quelle zone approximative. Cookies déposés : <code>_ga</code> et <code>_ga_TEF1YHQ9X0</code>, deux ans chacun. Les données sont conservées 14 mois.</p>
+    <h3>Publicité et réseaux sociaux</h3>
+    <p>Aucune publicité, aucun bouton de réseau social : aucun cookie publicitaire n’est déposé.</p>
+    <h2>Le simulateur intégré sur un autre site</h2>
+    <p>La version du simulateur proposée en iframe aux autres sites ne charge ni Clarity ni Google Analytics et ne dépose aucun cookie.</p>
+    <h2>Bloquer ces cookies</h2>
+    <p>Pour vous opposer à la mesure d’audience, bloquez les cookies tiers ou les domaines clarity.ms et google-analytics.com dans les réglages de votre navigateur ou avec un bloqueur, ou installez le <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">module de désactivation de Google Analytics</a>. Effacez ensuite les données du site pour supprimer les cookies déjà déposés. Les guides et les simulateurs fonctionnent tout aussi bien sans eux.</p>
+    <p>Questions : <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Mise à jour : {updated}.</p>
   </div>
 </PageLayout>

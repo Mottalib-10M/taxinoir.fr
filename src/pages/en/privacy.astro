@@ -1,9 +1,10 @@
 ---
 import PageLayout from '../../layouts/PageLayout.astro';
 import LegalIdentity from '../../components/LegalIdentity.astro';
-import { CONTACT_EMAIL, LAST_UPDATED, LEGAL, SITE_NAMES, SITE_URL } from '../../data/site-config';
+import { CONTACT_EMAIL, LEGAL, SITE_NAMES, SITE_URL } from '../../data/site-config';
 import { route } from '../../i18n/routes';
 const lang = 'en';
+const updated = '2026-10-05';
 ---
 <PageLayout title={`Privacy policy – ${SITE_NAMES[lang]}`} description="What data this site processes, on what legal basis, for how long, who can access it, and how to use your GDPR rights or complain to the French regulator CNIL." lang={lang} noindex={true} breadcrumbs={[{ label: 'Privacy' }]} showAuthor={false}>
   <div class="prose prose-slate max-w-none">
@@ -13,15 +14,18 @@ const lang = 'en';
     <LegalIdentity lang={lang} />
     <p>Contact: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. No data protection officer has been appointed, as the conditions of Article 37 GDPR are not met.</p>
     <h2>2. What the calculator does not do</h2>
-    <p>The calculation runs in your browser. Rides, fares, costs, turnover and status <strong>are not sent to any server</strong>, are not stored and are not linked to any identifier. The share link encodes your inputs in the address: only send it to people you choose.</p>
+    <p>The calculation runs in your browser. Rides, fares, costs, turnover and status <strong>are not sent to any server</strong>, are not stored and are not linked to any identifier; in Microsoft Clarity recordings, typed fields are masked. The share link encodes your inputs in the address: only send it to people you choose, and note that the address of a page opened from such a link is recorded by the audience measurement described below.</p>
     <h2>3. Processing carried out</h2>
     <h3>Server logs</h3><p>The host records IP address, date, page requested, browser and referrer. Purpose: security and diagnostics. Legal basis: legitimate interest (Art. 6(1)(f) GDPR). Retention: according to the host’s (GitHub’s) policy.</p>
-    <h3>Analytics and advertising</h3><p>The site currently loads no analytics tool and no advertising. If one is added, it will only run after your consent through a banner, and this page will be updated.</p>
+    <h3>Audience measurement: Microsoft Clarity</h3><p>Clarity (Microsoft Ireland Operations Limited) loads as soon as the page opens, with no consent banner. It produces session recordings and heatmaps: clicks, scrolling, pages viewed and their address, device and browser type, approximate location derived from the IP address. What you type into the calculators is masked in your browser and not sent. Purpose: understanding which guides and tools drivers use and what gets in the way. Legal basis: the publisher’s legitimate interest (Art. 6(1)(f) GDPR). Cookies: <code>_clck</code> (one year), <code>_clsk</code> (one day), and possibly <code>MUID</code> and <code>CLID</code> on Microsoft domains. Retention: 30 days for recordings, up to 13 months for aggregated statistics.</p>
+    <h3>Audience measurement: Google Analytics 4</h3><p>Google Analytics 4 (Google Ireland Limited) loads the same way, without a banner. It records pages viewed, where the visit came from, its duration, the device type and an approximate location (country, city); the IP address is not stored. Purpose and legal basis: as for Clarity (Art. 6(1)(f) GDPR). Cookies: <code>_ga</code> and <code>_ga_TEF1YHQ9X0</code>, two years. Retention: 14 months.</p>
+    <h3>Objecting to audience measurement</h3><p>Block third-party cookies or the clarity.ms and google-analytics.com domains in your browser, or install the <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">Google Analytics opt-out add-on</a>. The site remains fully usable. Cookie details are on the <a href={route('cookies', lang)}>cookies</a> page.</p>
+    <h3>Advertising</h3><p>The site shows no advertising.</p>
     <h3>Messages</h3><p>If you write to us, your address and message are processed to reply. Legal basis: legitimate interest. Retention: three years after the last exchange.</p>
-    <h2>4. Recipients</h2><p>No data is sold or shared. Only the host has access, as a processor under Article 28 GDPR.</p>
-    <h2>5. Transfers outside the EU</h2><p>The host, GitHub, Inc., is based in the United States; server logs may be processed there under the EU–U.S. Data Privacy Framework and the European Commission’s standard contractual clauses.</p>
+    <h2>4. Recipients</h2><p>No data is sold or shared. The following have access as processors under Article 28 GDPR: the host, GitHub; Microsoft (Microsoft Ireland Operations Limited and Microsoft Corporation) for Clarity; Google (Google Ireland Limited, and Google LLC for transfers) for Google Analytics.</p>
+    <h2>5. Transfers outside the EU</h2><p>The host, GitHub, Inc., is based in the United States; server logs may be processed there under the EU–U.S. Data Privacy Framework and the European Commission’s standard contractual clauses. Clarity data may be transferred to Microsoft Corporation and Google Analytics data to Google LLC, both in the United States and certified under the same Data Privacy Framework (see <a href="https://privacy.microsoft.com/privacystatement" rel="nofollow noopener" target="_blank">Microsoft’s privacy statement</a> and <a href="https://policies.google.com/privacy" rel="nofollow noopener" target="_blank">Google’s privacy policy</a>). Blocking clarity.ms and google-analytics.com avoids these transfers.</p>
     <h2>6. Your rights</h2><p>Rights of access, rectification, erasure, restriction, objection and portability (Articles 15 to 22 GDPR): write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>, reply within one month. You may complain to the {LEGAL.supervisoryAuthority}: <a href={LEGAL.supervisoryAuthorityUrl} rel="nofollow noopener" target="_blank">{LEGAL.supervisoryAuthorityUrl}</a>.</p>
     <h2>7. No automated decision</h2><p>The calculator’s result is an estimate computed at your request, with no legal effect: it is not an automated decision under Article 22 GDPR.</p>
-    <p>See also the <a href={route('cookies', lang)}>cookies</a> page. Last updated: {LAST_UPDATED}.</p>
+    <p>See also the <a href={route('cookies', lang)}>cookies</a> page. Last updated: {updated}.</p>
   </div>
 </PageLayout>
