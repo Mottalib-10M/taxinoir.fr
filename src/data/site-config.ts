@@ -27,7 +27,7 @@ export const GOOGLE_VERIFY_CODE = '';
  *  d'audience se charge à l'ouverture de la page et n'est décrite que dans les pages
  *  cookies et confidentialité. */
 export const CONSENT_MODE: 'opt-in' | 'notice' | 'none' = 'none';
-export const GA4_ID = 'G-TEF1YHQ9X0';
+export const GA4_ID = '';
 /** Projet Microsoft Clarity (compte amradif). */
 export const CLARITY_ID = 'ysy2luztw0';
 export const INDEXNOW_KEY = '4f8b2c6e1a9d47b3a5e0c7d2f6b1e938';

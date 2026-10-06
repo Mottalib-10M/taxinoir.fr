@@ -3,25 +3,25 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import { CONTACT_EMAIL, SITE_NAMES } from '../../data/site-config';
 import { route } from '../../i18n/routes';
 const lang = 'en';
-const updated = '2026-10-05';
+const updated = '2026-10-06';
 ---
-<PageLayout title={`Cookies – ${SITE_NAMES[lang]}`} description="Cookies on TaxiNoir in France: Microsoft Clarity and Google Analytics 4 load without a banner, how long each cookie lasts and how to block audience measurement." lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
+<PageLayout title={`Cookies – ${SITE_NAMES[lang]}`} description="TaxiNoir sets no cookies: the calculators for taxi, ride-hailing and ambulance drivers keep nothing. Only site stability is measured, anonymously and cookie-free." lang={lang} noindex={true} breadcrumbs={[{ label: 'Cookies' }]} showAuthor={false}>
   <div class="prose prose-slate max-w-none">
     <h1>Cookies</h1>
-    <p>This page lists the cookies set during a visit and explains how to block them. It complements the <a href={route('privacy', lang)}>privacy policy</a>.</p>
-    <h2>The calculators do not need any</h2>
-    <p>The net income calculator, the VAT tool, the renewal calendar and the other tools for taxi, VTC and ambulance drivers run entirely in your browser. Rides, fares, costs and turnover are never stored in a cookie. The only cookies on the site come from the audience measurement described below.</p>
-    <h2>Audience measurement</h2>
-    <h3>Microsoft Clarity</h3>
-    <p>Clarity loads as soon as the page opens: the site shows no consent banner. It helps us see how the guides and calculators are actually used, through session recordings (clicks, scrolling, movement on the page) and heatmaps. Amounts and other values you type into the calculator fields are masked in your browser before anything is sent. Cookies set: <code>_clck</code> (one year) and <code>_clsk</code> (one day); Microsoft may also set <code>MUID</code> and <code>CLID</code> on its own domains.</p>
-    <h3>Google Analytics 4</h3>
-    <p>Google Analytics 4, provided by Google Ireland Limited, loads the same way, without a banner. It counts page views and shows where visits come from, how long they last, which kind of device is used and the approximate location. Cookies set: <code>_ga</code> and <code>_ga_TEF1YHQ9X0</code>, two years each. Data is kept for 14 months.</p>
-    <h3>Advertising and social networks</h3>
-    <p>No advertising and no social buttons: no advertising cookie is set.</p>
-    <h2>The calculator embedded on other sites</h2>
-    <p>The iframe version of the calculator offered to other sites loads neither Clarity nor Google Analytics and sets no cookie.</p>
-    <h2>Blocking these cookies</h2>
-    <p>To object to audience measurement, block third-party cookies or the clarity.ms and google-analytics.com domains in your browser settings or with a blocker, or install the <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">Google Analytics opt-out add-on</a>. Then clear the site’s data to remove cookies already set. The guides and calculators work just as well without them.</p>
-    <p>Questions: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. Updated: {updated}.</p>
+    <p>TaxiNoir <strong>sets no cookies</strong> during your visit. There is no banner either, since there is nothing to accept. For details of processing, see the <a href={route('privacy', lang)}>privacy policy</a>.</p>
+    <h2>The calculators keep nothing</h2>
+    <p>A driver’s net income, VAT on fares, the renewal timetable for the professional card: these tools run in your browser. Number of rides, fares, vehicle costs and turnover are sent nowhere and are written neither to a cookie nor to browser storage; they are gone when you close the page. The publisher records no personal data.</p>
+    <h2>Only stability is measured</h2>
+    <p>To find out whether a page crashes or a calculator takes too long to appear, the site uses Microsoft Clarity in <strong>cookie-free</strong> mode. It notes errors, loading times, clicks that lead nowhere and scrolling, nothing more. No Clarity cookie (<code>_clck</code>, <code>_clsk</code>) or Microsoft cookie (<code>MUID</code>, <code>CLID</code>) is set; each page view has a separate identifier and visits are never matched up. Page text and the amounts you enter are masked before sending.</p>
+    <ul>
+      <li>Tool provider: Microsoft Ireland Operations Limited, One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Ireland;</li>
+      <li>retention: 30 days for recordings, 13 months for aggregates;</li>
+      <li>basis: the publisher’s legitimate interest (Art. 6(1)(f) GDPR).</li>
+    </ul>
+    <p>No other measurement tool, no advertising, no social media button.</p>
+    <h2>The calculator embedded on another site</h2>
+    <p>The iframe version of the calculator offered to other sites does not load Clarity and sets no cookies.</p>
+    <h2>Refusing the stability measurement</h2>
+    <p>Block the clarity.ms domain in your browser settings or with a blocker: guides and calculators work just the same. You can also write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> or complain to the CNIL, the French data protection authority. Updated: {updated}.</p>
   </div>
 </PageLayout>
