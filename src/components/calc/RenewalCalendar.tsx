@@ -1,6 +1,7 @@
 /** Calendrier de renouvellement : carte VTC ou taxi, stage de formation continue, registre des VTC.
  *  Moteur : lib/engine/acces.ts > calendrier. Date du jour appliquée après le premier rendu (§17.5). */
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
+import ResultBar from './ResultBar';
 import SelectField from '../ui/SelectField';
 import { calendrier, joursEntre } from '../../lib/engine/acces';
 import { P } from '../../lib/engine/params';
@@ -40,6 +41,7 @@ export default function RenewalCalendar({ lang = 'fr' }: { lang?: L }) {
       <SelectField id={`rc-${k}y`} label={k === 'c' ? t.yc : t.yr} value={o.y} onChange={(x) => set({ ...o, y: x })} options={years.map((y) => ({ value: String(y), label: String(y) }))} />
     </div>
   );
+  const resRef = useRef<HTMLDivElement>(null);
   return (
     <div className="rechner not-prose rounded-xl border border-navy-200 bg-white p-4 sm:p-6" data-chrome>
       <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-start lg:gap-6">
@@ -48,7 +50,7 @@ export default function RenewalCalendar({ lang = 'fr' }: { lang?: L }) {
         {row(c, setC, 'c')}
         {metier === 'vtc' && row(r, setR, 'r')}
       </form>
-      <div aria-live="polite" className="mt-6 lg:mt-0 lg:sticky lg:top-20 rounded-xl border border-navy-200 bg-amber-50/60 p-4 sm:p-5">
+      <div ref={resRef} aria-live="polite" data-resultat className="mt-6 lg:mt-0 lg:sticky lg:top-20 rounded-xl border border-navy-200 bg-amber-50/60 p-4 sm:p-5">
         <p className="text-sm font-medium text-navy-700">{t.head} · {lab(next.id)}</p>
         <p className="tabular-nums mt-1 text-3xl font-bold text-navy-900">{displayDate(next.date, lang === 'fr' ? 'fr-FR' : 'en-GB')}</p>
         <p className="mt-1 text-navy-700">{rel(next.date)}</p>
@@ -58,6 +60,7 @@ export default function RenewalCalendar({ lang = 'fr' }: { lang?: L }) {
         <p className="mt-3 text-sm text-navy-700">{fill(t.note)}</p>
       </div>
     </div>
+      <ResultBar target={resRef} label={`${t.head} · ${lab(next.id)}`} value={displayDate(next.date, lang === 'fr' ? 'fr-FR' : 'en-GB')} />
     </div>
   );
 }

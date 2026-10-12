@@ -1,5 +1,6 @@
 /** TVA d'un taxi ou d'un VTC et comparateur micro-entreprise / réel. Moteur : lib/engine/revenu.ts. */
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
+import ResultBar from './ResultBar';
 import NumberField from '../ui/NumberField';
 import SelectField from '../ui/SelectField';
 import { revenuNet, regimeTva, DEFAULTS, type Metier } from '../../lib/engine/revenu';
@@ -30,6 +31,7 @@ export default function VatTool({ lang = 'fr' }: { lang?: L }) {
   const re = useMemo(() => run('reel'), [metier, ca, frais, commission, opt]);
   const reg = regimeTva(mi.caDeclareTtc, opt === '1');
   const ecart = re.netAnnuel - mi.netAnnuel;
+  const resRef = useRef<HTMLDivElement>(null);
   return (
     <div className="rechner not-prose rounded-xl border border-navy-200 bg-white p-4 sm:p-6" data-chrome>
       <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-start lg:gap-6">
@@ -44,7 +46,7 @@ export default function VatTool({ lang = 'fr' }: { lang?: L }) {
         </div>
         {metier === 'vtc_plateforme' && <div className="grid grid-cols-2 gap-x-4 gap-y-4"><NumberField id="tv-k" label={t.commission} value={commission} onChange={setCommission} unit="%" max={60} decimals={1} lang={lang} /></div>}
       </form>
-      <div aria-live="polite" className="mt-6 lg:mt-0 lg:sticky lg:top-20 rounded-xl border border-navy-200 bg-amber-50/60 p-4 sm:p-5">
+      <div ref={resRef} aria-live="polite" data-resultat className="mt-6 lg:mt-0 lg:sticky lg:top-20 rounded-xl border border-navy-200 bg-amber-50/60 p-4 sm:p-5">
         <p className="text-sm font-medium text-navy-700">{t.head}</p>
         <p className="tabular-nums mt-1 text-4xl font-bold text-navy-900">{$(mi.tva)}</p>
         <table className="mt-4 w-full text-sm"><tbody className="divide-y divide-navy-200">
@@ -63,6 +65,7 @@ export default function VatTool({ lang = 'fr' }: { lang?: L }) {
         <p className="mt-3 text-sm text-navy-700">{t.note}</p>
       </div>
     </div>
+      <ResultBar target={resRef} label={t.head} value={$(mi.tva)} />
     </div>
   );
 }

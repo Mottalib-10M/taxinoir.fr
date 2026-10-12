@@ -1,5 +1,6 @@
 /** Coût d'accès au métier (VTC, taxi, ambulancier). Moteur : lib/engine/acces.ts > coutAcces. */
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
+import ResultBar from './ResultBar';
 import NumberField from '../ui/NumberField';
 import SelectField from '../ui/SelectField';
 import { coutAcces, type MetierAcces } from '../../lib/engine/acces';
@@ -28,6 +29,7 @@ export default function AccessCost({ lang = 'fr' }: { lang?: L }) {
   useEffect(() => { updateURL({ m: metier, f: formation, md: medecin, ps: psc1, li: licence, d: demarrage, g: garantie }); }, [metier, formation, medecin, psc1, licence, demarrage, garantie]);
   const r = useMemo(() => coutAcces({ metier, formation, medecin, psc1, licence, demarrage, garantieFinanciere: garantie === '1' }), [metier, formation, medecin, psc1, licence, demarrage, garantie]);
   const help = t.formationHelp.replace('{min}', $(P.acces.formation_cout_min)).replace('{max}', $(P.acces.formation_cout_max));
+  const resRef = useRef<HTMLDivElement>(null);
   return (
     <div className="rechner not-prose rounded-xl border border-navy-200 bg-white p-4 sm:p-6" data-chrome>
       <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-start lg:gap-6">
@@ -46,7 +48,7 @@ export default function AccessCost({ lang = 'fr' }: { lang?: L }) {
         </div>}
         <div className="grid grid-cols-2 gap-x-4 gap-y-4"><NumberField id="ac-d" label={t.demarrage} value={demarrage} onChange={setDemarrage} unit="€" max={500000} lang={lang} /></div>
       </form>
-      <div aria-live="polite" className="mt-6 lg:mt-0 lg:sticky lg:top-20 rounded-xl border border-navy-200 bg-amber-50/60 p-4 sm:p-5">
+      <div ref={resRef} aria-live="polite" data-resultat className="mt-6 lg:mt-0 lg:sticky lg:top-20 rounded-xl border border-navy-200 bg-amber-50/60 p-4 sm:p-5">
         <p className="text-sm font-medium text-navy-700">{t.head}</p>
         <p className="tabular-nums mt-1 text-4xl font-bold text-navy-900">{$(r.total)}</p>
         <p className="tabular-nums mt-1 text-navy-700">{t.regl} : {$(r.reglementes)} · {t.priv} : {$(r.prives)}</p>
@@ -56,6 +58,7 @@ export default function AccessCost({ lang = 'fr' }: { lang?: L }) {
         <p className="mt-3 text-sm text-navy-700">{t.note}</p>
       </div>
     </div>
+      <ResultBar target={resRef} label={t.head} value={$(r.total)} />
     </div>
   );
 }

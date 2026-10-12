@@ -1,6 +1,7 @@
 /** Vérificateur de véhicule VTC : critères de l'arrêté du 26 mars 2015 et nombre de places.
  *  Âge calculé au premier rendu avec le jour du build, puis avec la date du jour (RECETTE §17.5). */
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
+import ResultBar from './ResultBar';
 import NumberField from '../ui/NumberField';
 import SelectField from '../ui/SelectField';
 import { verifierVehicule, ageEnMois, finUsageVtc, type Motorisation } from '../../lib/engine/acces';
@@ -40,6 +41,7 @@ export default function VehicleChecker({ lang = 'fr' }: { lang?: L }) {
   const V = P.vehicule_vtc;
   const fmt = (id: string, v: number) => id === 'age' ? `${n(v)} ${t.mois_u}` : id === 'longueur' || id === 'largeur' ? `${n(v, 2)} m` : id === 'puissance' ? `${n(v)} kW` : n(v);
   const seuil = (id: string) => id === 'places' ? `${V.places_min}–${V.places_max}` : id === 'age' ? `< ${V.age_max_ans * 12} ${t.mois_u}` : id === 'portes' ? `≥ ${V.portes_min}` : id === 'longueur' ? `≥ ${n(V.longueur_min_m, 2)} m` : id === 'largeur' ? `≥ ${n(V.largeur_min_m, 2)} m` : `≥ ${V.puissance_min_kw} kW`;
+  const resRef = useRef<HTMLDivElement>(null);
   return (
     <div className="rechner not-prose rounded-xl border border-navy-200 bg-white p-4 sm:p-6" data-chrome>
       <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-start lg:gap-6">
@@ -62,7 +64,7 @@ export default function VehicleChecker({ lang = 'fr' }: { lang?: L }) {
           <SelectField id="vh-co" label={t.collection} value={collection} onChange={setCollection} options={[{ value: '0', label: t.non }, { value: '1', label: t.oui }]} />
         </div>
       </form>
-      <div aria-live="polite" className="mt-6 lg:mt-0 lg:sticky lg:top-20 rounded-xl border border-navy-200 bg-amber-50/60 p-4 sm:p-5">
+      <div ref={resRef} aria-live="polite" data-resultat className="mt-6 lg:mt-0 lg:sticky lg:top-20 rounded-xl border border-navy-200 bg-amber-50/60 p-4 sm:p-5">
         <p className={`text-2xl font-bold ${r.conforme ? 'text-green-800' : 'text-red-800'}`}>{r.conforme ? t.head_ok : t.head_ko}</p>
         <table className="mt-4 w-full text-sm"><tbody className="divide-y divide-navy-200">
           {r.criteres.map((c) => <tr key={c.id}><td className="py-1.5 pr-3 text-navy-700">{t[`c_${c.id}` as keyof typeof t]}</td><td className="tabular-nums py-1.5 text-right text-navy-900">{fmt(c.id, c.valeur)} <span className="text-xs text-navy-600">({t.seuil} {seuil(c.id)})</span></td><td className={`py-1.5 pl-3 text-right font-medium ${c.statut === 'ko' ? 'text-red-800' : 'text-green-800'}`}>{t[c.statut]}</td></tr>)}
@@ -71,6 +73,7 @@ export default function VehicleChecker({ lang = 'fr' }: { lang?: L }) {
         <p className="mt-3 text-sm text-navy-700">{t.note}</p>
       </div>
     </div>
+      <ResultBar target={resRef} label={r.conforme ? t.head_ok : t.head_ko} value="" />
     </div>
   );
 }

@@ -3,7 +3,8 @@
  * Moteur : lib/engine/revenu.ts. Premier rendu = valeurs par défaut (RECETTE §17.5), puis le lien
  * partagé est appliqué dans useEffect.
  */
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
+import ResultBar from './ResultBar';
 import NumberField from '../ui/NumberField';
 import SelectField from '../ui/SelectField';
 import Toggle from '../ui/Toggle';
@@ -93,6 +94,7 @@ export default function RevenueCalculator({ lang = 'fr', methodHref }: { lang?: 
   ];
   const copy = () => { const txt = `${t.head} : ${$(r.netMensuel)} (${$(r.netHoraire, 2)} ${t.horaire}) · ${window.location.href}`; navigator.clipboard?.writeText(txt).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1500); }); };
 
+  const resRef = useRef<HTMLDivElement>(null);
   return (
     <div className="rechner not-prose rounded-xl border border-navy-200 bg-white p-4 sm:p-6" data-chrome>
       <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-start lg:gap-6">
@@ -136,7 +138,7 @@ export default function RevenueCalculator({ lang = 'fr', methodHref }: { lang?: 
         </details>
       </form>
 
-      <div aria-live="polite" className="mt-6 lg:mt-0 lg:sticky lg:top-20 rounded-xl border border-navy-200 bg-amber-50/60 p-4 sm:p-5">
+      <div ref={resRef} aria-live="polite" data-resultat className="mt-6 lg:mt-0 lg:sticky lg:top-20 rounded-xl border border-navy-200 bg-amber-50/60 p-4 sm:p-5">
         <p className="text-sm font-medium text-navy-700">{t.head} <span className="text-navy-600">({t.headSub})</span></p>
         <p className="tabular-nums mt-1 text-4xl font-bold text-navy-900">{$(r.netMensuel)}</p>
         <p className="tabular-nums mt-1 text-navy-700">{$(r.netHoraire, 2)} {t.horaire} · {t.an} : {$(r.netAnnuel)}</p>
@@ -158,6 +160,7 @@ export default function RevenueCalculator({ lang = 'fr', methodHref }: { lang?: 
         </div>
       </div>
     </div>
+      <ResultBar target={resRef} label={t.head} value={$(r.netMensuel)} />
     </div>
   );
 }

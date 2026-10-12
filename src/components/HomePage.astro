@@ -20,12 +20,12 @@ const jsonLd = [websiteSchema(lang), organizationSchema(lang), webPageSchema({ n
 const sim = route('revenu-net-chauffeur', lang);
 ---
 <PageLayout title={x.title} description={x.description} lang={lang} jsonLd={jsonLd} faqs={x.faqs} sources={sources}>
-  <header class="mb-6">
-    <h1 class="text-3xl font-bold text-navy-900 md:text-4xl">{x.h1}</h1>
-    <p class="mt-3 text-lg text-navy-700">{x.intro}</p>
+  <header class="mb-3 sm:mb-4">
+    <h1 class="text-[1.75rem] font-bold leading-tight text-navy-900 sm:text-3xl md:text-4xl">{x.h1}</h1>
+    <p class="mt-2 text-base text-navy-700 sm:text-lg">{x.intro}</p>
   </header>
-  <Clamp text={x.resume} lang={lang} id="clamp-home" sentences={1} class="mb-2" />
-  <MiniSim client:load kind="accueil" lang={lang} href={sim} />
+  <Clamp text={x.resume} lang={lang} id="clamp-home" sentences={1} class="mb-3" />
+  <MiniSim client:load spacing="mb-8 mt-3" kind="accueil" lang={lang} href={sim} />
   <div class="prose prose-slate max-w-none">
     {parts.map((p, i) => i % 2 === 0 ? <Fragment set:html={p} /> : <MiniSim client:load kind={p} lang={lang} href={sim} />)}
   </div>
